@@ -5,7 +5,7 @@ import { provideStore } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTransloco } from '@jsverse/transloco';
 import { AppTranslocoLoader } from './transloco.loader';
-import { releaseReducer } from './state/release.reducer';
+import { persistenceReducer, releaseReducer } from './state/release.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter([]),
     provideAnimationsAsync(),
     provideHttpClient(),
-    provideStore({ release: releaseReducer }),
+    provideStore({ release: releaseReducer }, { metaReducers: [persistenceReducer] }),
     provideTransloco({
       config: { availableLangs: ['zh'], defaultLang: 'zh', reRenderOnLangChange: true, prodMode: true },
       loader: AppTranslocoLoader

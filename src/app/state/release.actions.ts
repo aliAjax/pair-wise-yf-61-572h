@@ -7,3 +7,7 @@ export const pauseBatch = createAction('[Release] Pause batch', props<{ id: stri
 export const resumeBatch = createAction('[Release] Resume batch', props<{ id: string; actor: string }>());
 export const rollbackBatch = createAction('[Release] Rollback batch', props<{ id: string; actor: string }>());
 export const telemetryTick = createAction('[Release] Telemetry tick');
+
+export const revokeVersion = createAction('[Release] Revoke version', props<{ versionId: string; actor: string }>());
+export const reopenVersion = createAction('[Release] Reopen version', props<{ versionId: string; actor: string }>());
+export const recalculatePaths = createAction('[Release] Recalculate paths');
